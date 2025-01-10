@@ -1,6 +1,6 @@
 ### End to End Data Flow Architecture
 
-
+![Telco Logical Architecture](https://github.com/vegetariancoder/byte-building/blob/main/TELCO/DataFlow/TelcoDataFlow.jpg)
 
 
 ### Telco Data Analytics Problem Scenarios
