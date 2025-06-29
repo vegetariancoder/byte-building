@@ -11,7 +11,7 @@ To extract meaningful insights from hospital data including billing, appointment
 
 ---
 
-![OList Logical Architecture](https://github.com/vegetariancoder/competitive-programming/blob/main/Projects/OLIST_SALES/DataFlow/OListLogicalArchitecture.jpg)
+![OList Logical Architecture](https://github.com/vegetariancoder/competitive-programming/blob/main/Projects/HOSPITAL_REVENUE/img/flow.png)
 
 ## 📊 Use Cases Covered
 
