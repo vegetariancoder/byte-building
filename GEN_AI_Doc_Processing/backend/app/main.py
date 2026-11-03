@@ -1,7 +1,7 @@
 
 from fastapi import FastAPI
 
-from backend.app.schemas.question import QuestionResponse, QuestionRequest
+from backend.app.schemas.question import QuestionRequest, QuestionResponse
 from backend.app.services.question_service import prepare_question
 
 app = FastAPI(title="Assignment Intelligence Platform")
