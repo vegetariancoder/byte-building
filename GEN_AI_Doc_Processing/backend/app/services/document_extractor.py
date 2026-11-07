@@ -35,6 +35,16 @@ def extract_docx(content: bytes) -> dict:
         if text:
             paragraphs.append(text)
 
+    for table in document.tables:
+        for row in table.rows:
+            text = " | ".join(
+                cell.text.strip()
+                for cell in row.cells
+                if cell.text.strip()
+            )
+            if text:
+                paragraphs.append(text)
+
     return {
         "file_type": "docx",
         "paragraph_count": len(paragraphs),

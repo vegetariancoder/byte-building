@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 
+from backend.app.api.routes.chat_route import chat_router
 from backend.app.api.routes.document_analysis_route import document_analysis_router
 from backend.app.api.routes.document_extraction_route import document_extraction_router
 from backend.app.api.routes.documents_route import documents_router
 from backend.app.api.routes.questions_route import questions_router
-from backend.app.api.routes.chat_route import chat_router
 
 app = FastAPI(title="Assignment Intelligence Platform")
 

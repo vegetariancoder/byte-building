@@ -1,20 +1,30 @@
 
 import os
+from typing import Union
 
-from openai import AzureOpenAI
+from openai import AzureOpenAI, OpenAI
 
 from backend.app.config import load_project_env
 
 load_project_env()
 
 
-def get_embedding_client() -> AzureOpenAI:
+def get_embedding_client() -> Union[AzureOpenAI, OpenAI]:
     endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
     api_key = os.getenv("AZURE_OPENAI_API_KEY")
     api_version = os.getenv("AZURE_OPENAI_API_VERSION")
 
-    if not all([endpoint, api_key, api_version]):
+    if not endpoint or not api_key:
         raise ValueError("Azure OpenAI configuration is missing.")
+
+    if endpoint.rstrip("/").endswith("/openai/v1"):
+        return OpenAI(
+            base_url=f"{endpoint.rstrip('/')}/",
+            api_key=api_key,
+        )
+
+    if not api_version:
+        raise ValueError("Azure OpenAI API version is missing.")
 
     return AzureOpenAI(
         azure_endpoint=endpoint,

@@ -2,12 +2,12 @@
 import os
 
 from backend.app.integrations.ai_search import get_search_client
+from backend.app.rag.answer_generation import stream_grounded_answer
 from backend.app.rag.embeddings import (
     generate_embeddings,
     get_embedding_client,
 )
 from backend.app.rag.retrieval import search_chunks
-from backend.app.rag.answer_generation import stream_grounded_answer
 
 
 def stream_chat(
