@@ -1,3 +1,4 @@
+
 import os
 
 from openai import AzureOpenAI
@@ -64,12 +65,10 @@ def embed_chunks(
     if len(embeddings) != len(chunks):
         raise ValueError("Embedding count does not match chunk count.")
 
-    results = []
-
-    for chunk, embedding in zip(chunks, embeddings):
-        results.append({
+    return [
+        {
             **chunk,
             "embedding": embedding,
-        })
-
-    return results
+        }
+        for chunk, embedding in zip(chunks, embeddings)
+    ]
