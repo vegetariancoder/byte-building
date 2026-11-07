@@ -6,4 +6,5 @@ class DocumentUploadResponse(BaseModel):
     filename: str
     content_type: str
     file_size: int
+    storage_path : str
     message: str

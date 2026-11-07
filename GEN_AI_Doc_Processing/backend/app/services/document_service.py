@@ -1,5 +1,7 @@
 from fastapi import HTTPException, UploadFile
 
+from backend.app.integrations.adls_client import upload_file
+
 ALLOWED_EXTENSIONS = {".pdf", ".docx"}
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB
 
@@ -29,10 +31,13 @@ async def process_document(file: UploadFile) -> dict:
             detail="File size exceeds the 10 MB limit.",
         )
 
+    storage_path = upload_file(content, filename)
+
     return {
         "status": "received",
         "filename": filename,
         "content_type": file.content_type or "unknown",
         "file_size": len(content),
+        "storage_path": storage_path,
         "message": "Document uploaded successfully.",
     }
